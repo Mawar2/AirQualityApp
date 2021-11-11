@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header';
+import ImageGif from './components/ImageGif';
+import AirqualityUtility from './components/AirqualityUtility';
+import BannerMessage from './components/BannerMessage';
+import CityDropDownMenu from './components/CityDropdownMenu';
 import './App.css';
 
-function App() {
+class App extends React.Component {
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+      <Header/>  
+      <BannerMessage></BannerMessage>
+      <ImageGif></ImageGif>
+      <CityDropDownMenu></CityDropDownMenu>
+      <AirqualityUtility> </AirqualityUtility>
+      <div>
+      </div>
+      </div>
     </div>
   );
 }
-
+}
 export default App;
