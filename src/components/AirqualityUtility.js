@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const options = [];
 
+// Api to populate list of cities available to Open AQ Platform
 function api (){  
     axios.get('https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/cities?limit=10000&page=1&offset=0&sort=asc&country_id=US&order_by=city', { crossdomain: true })     
     .then(response => {
@@ -16,12 +17,14 @@ function api (){
     })
     return options
   }
+
 function AirqualityUtility(){
     api()
     const [measurements, setMeasurements] = useState([]);
     const [items, setItems] = useState([]);
     const [city, setCity] = useState("Type each city!");
     
+    // Store user text and added utility to help guide users through app.
     const addCityToList = () => {
         if (items.length === 2){
             AQ_call(items[0].name,items[1].name)
@@ -47,6 +50,7 @@ function AirqualityUtility(){
         
         }
     };
+    // Api for getting the Air Quality data for chosen cities
     const AQ_call = (city, cityTwo) => {
 
         let api = "https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/latest?limit=100&page=1&offset=0&sort=asc&radius=1000&country_id=US&country=US&city="+city+"&city="+cityTwo
